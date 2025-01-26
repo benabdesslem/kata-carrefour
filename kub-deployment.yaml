@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deliver-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: deliver
+  template:
+    metadata:
+      labels:
+        app: deliver
+    spec:
+      containers:
+        - name: deliver
+          image: deliver-image:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Never
